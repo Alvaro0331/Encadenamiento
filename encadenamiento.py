@@ -25,8 +25,8 @@ def encadenamiento(objetivo):
     
     #Identificar si se puede inferir su valor a partir de las reglas
     if objetivo in reglas:
-        dependencias, regla=reglas[objetivo]
-        print(f"Evaluando {objetivo} con {regla}")
+        dependencias=reglas[objetivo]
+        #print(f"Evaluando {objetivo} con {dependencias}")
         valor_premisas=[]
         for premisa in dependencias:
             #Recursion
@@ -51,5 +51,5 @@ def encadenamiento(objetivo):
 
 #Test
 objetivo="M"
-encadenamiento(objetivo)
-print(f" {objetivo}")
+valor=encadenamiento(objetivo)
+print(f"El {objetivo} es {valor}")
