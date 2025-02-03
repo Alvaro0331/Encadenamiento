@@ -67,10 +67,10 @@ node_colors=[colores[nodo[n]] for n in G.nodes]
 
 # Dibujar el árbol
 plt.figure(figsize=(8, 6))
-pos = nx.spring_layout(G, seed=42)
+pos = nx.spring_layout(G, seed=45, k=0.7)
 nx.draw(G, pos, with_labels=True, node_size=2000, node_color=node_colors, edge_color="gray", font_size=10, font_weight="bold")
 #Etiquetas de los nodos y sus valores
-node_labels = {n: f"\n({str(nodo[n])})" for n in G.nodes}
+node_labels = {n: f"\n\n({str(nodo[n])})" for n in G.nodes}
 nx.draw_networkx_labels(G, pos, labels=node_labels, font_size=10, font_weight="bold")
 plt.title("Encadenamiento")
 plt.show()
