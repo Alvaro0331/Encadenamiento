@@ -53,3 +53,24 @@ def encadenamiento(objetivo):
 objetivo="M"
 valor=encadenamiento(objetivo)
 print(f"El {objetivo} es {valor}")
+
+#Creamos el grafo a mostrar
+G=nx.DiGraph()
+
+for nodo_destino,(dependencias) in reglas.items():
+    for dependencia in dependencias:
+        G.add_edge(dependencia,nodo_destino)
+
+#Dar colores a los nodos
+colores={True:"lightgreen", False:"lightcoral",None:"lightgray"}
+node_colors=[colores[nodo[n]] for n in G.nodes]
+
+# Dibujar el árbol
+plt.figure(figsize=(8, 6))
+pos = nx.spring_layout(G, seed=42)
+nx.draw(G, pos, with_labels=True, node_size=2000, node_color=node_colors, edge_color="gray", font_size=10, font_weight="bold")
+#Etiquetas de los nodos y sus valores
+node_labels = {n: f"\n({str(nodo[n])})" for n in G.nodes}
+nx.draw_networkx_labels(G, pos, labels=node_labels, font_size=10, font_weight="bold")
+plt.title("Encadenamiento")
+plt.show()
